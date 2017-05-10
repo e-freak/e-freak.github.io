@@ -16,13 +16,60 @@
                 <h1>プロジェクト作成</h1>
                 <ul>
                     <li><a href="#title-initialize">初期化</a></li>
+                    <li><a href="#title-gulp">gulp導入</a></li>
+                    <li>もう少し書く...</li>
                 </ul>
             </section>
             <section>
                 <h2 id="title-initialize">初期化</h2>
-                <ul>
-                    <li>そのうち書く</li>
-                </ul>
+                <ol>
+                    <li>Gitリポジトリを作成</li>
+                    <ul>
+                        <li><a href="https://github.com/e-freak/" target="_blank">GitHub</a> の以下のボタンから</li>
+                        <li class="dotless"><img src="../image/git02.png" alt="リポジトリ作成ボタン" /></li>
+                    </ul>
+                    <li>ローカルにリポジトリをクローン</li>
+                    <ul>
+                        <li>このディレクトリがプロジェクトのルートディレクトリとなる。</li>
+                    </ul>
+                    <li>ルートディレクトリで「npm init -y」を実行</li>
+                    <ul>
+                        <li>実行後、<strong>package.json</strong> が自動生成される。</li>
+                    </ul>
+                </ol>
+            </section>
+            <section>
+                <h2 id="title-gulp">gulp導入</h2>
+                <ol>
+                    <li>ルートディレクトリで以下のコマンドを実行</li>
+                    <ul>
+                        <li>npm --save-dev install gulp</li>
+                        <li>npm --save-dev install gulp-babel@5.3.0</li>
+                        <li>npm --save-dev install gulp-load-plugins</li>
+                        <li>npm --save-dev install gulp-util</li>
+                        <li>npm --save-dev install through2</li>
+                        <li>npm --save-dev install browserify</li>
+                        <ul>
+                            <li>gulpを用いた基本的なプログラミングで利用</li>
+                            <li>babelのバージョン指定はelectronとの互換性のため</li>
+                        </ul>
+                        <li>npm --save-dev install gulp-mocha</li>
+                        <li>npm --save-dev install mocha</li>
+                        <ul>
+                            <li>ユニットテストで利用</li>
+                        </ul>
+                        <li>npm --save-dev install electron-prebuilt</li>
+                        <li>npm --save-dev install electron-packager</li>
+                        <li>npm --save-dev install asar</li>
+                        <ul>
+                            <li>electronアプリケーションの開発で利用</li>
+                        </ul>
+                    </ul>
+                    <li>ルートディレクトリ直下に生成される <strong>node_modules</strong> ディレクトリを、gitignoreに登録</li>
+                    <ul>
+                        <li>ディレクトリを右クリックして「TortoiseGit」→「無視リストに追加」</li>
+                    </ul>
+                </ol>
             </section>
         </main>
         <footer>
