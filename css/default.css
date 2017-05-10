@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+body {
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    background-color: #FFFDFF;
+    // background-image: url("../image/background-lotus.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right bottom;
+    color: #404040;
+    font-size: 12pt;
+    font-family: "Meiryo UI", "ÉÅÉCÉäÉI";
+}
+
+header {
+    margin-bottom: 50px;
+}
+
+footer {
+    margin-top: 100px;
+    text-align: right;
+}
+
+main {
+}
+
+nav {
+    font-size: 16pt;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+section {
+    margin-bottom: 60px;
+}
+
+ul {
+    margin-bottom: 20px;
+}
+
+li.dotless {
+    list-style: none;
+}
+
+#copyright {
+    color: #C0C0C0;
+    font-size: 9pt;
+    font-style: oblique;
+}
+
