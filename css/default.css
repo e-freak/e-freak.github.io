@@ -5,13 +5,12 @@ body {
     margin-left: 30px;
     margin-right: 30px;
     background-color: #FFFDFF;
-    // background-image: url("../image/background-lotus.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: right bottom;
     color: #404040;
     font-size: 12pt;
-    font-family: "Meiryo UI", "メイリオ";
+    font-family: 'Meiryo UI', 'メイリオ', 'Sans-serif';
 }
 
 header {
@@ -60,6 +59,20 @@ li.directory-icon {
 
 li.file-icon {
     list-style-image: url("../image/icon-file.png");
+}
+
+span.codeline {
+    color: #000080;
+    font-family: 'Consolas', 'Courier New', 'Courier', 'Monaco', 'monospace';
+    white-space: pre-wrap;
+}
+
+span.codeline::after {
+    content: "\A";
+}
+
+span.code-comment {
+    color: #008000;
 }
 
 #copyright {
