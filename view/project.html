@@ -17,13 +17,17 @@
                 <ul>
                     <li><a href="#title-initialize">初期化</a></li>
                     <li><a href="#title-gulp">gulp導入</a></li>
-                    <li>もう少し書く...</li>
+                    <li><a href="#title-gulpfile">gulpfile作成</a></li>
+                    <li><a href="#title-entry-point">エントリポイント作成</a></li>
+                    <li><a href="#title-directory">ディレクトリ構成</a></li>
+                    <li><a href="#title-hello">Hello, World</a></li>
                 </ul>
             </section>
             <section>
                 <h2 id="title-initialize">初期化</h2>
                 <ol>
                     <li>Gitリポジトリを作成</li>
+                    <li class="dotless">※ リポジトリ名がプロジェクト名となるので注意</li>
                     <ul>
                         <li><a href="https://github.com/e-freak/" target="_blank">GitHub</a> の以下のボタンから</li>
                         <li class="dotless"><img src="../image/git02.png" alt="リポジトリ作成ボタン" /></li>
@@ -65,10 +69,101 @@
                             <li>electronアプリケーションの開発で利用</li>
                         </ul>
                     </ul>
-                    <li>ルートディレクトリ直下に生成される <strong>node_modules</strong> ディレクトリを、gitignoreに登録</li>
+                    <li>ルートディレクトリ直下に生成される <strong>node_modules</strong> ディレクトリを、.gitignoreに登録</li>
                     <ul>
                         <li>ディレクトリを右クリックして「TortoiseGit」→「無視リストに追加」</li>
                     </ul>
+                </ol>
+            </section>
+            <section>
+                <h2 id="title-gulpfile">gulpfile作成</h2>
+                <ol>
+                    <li class="dotless">以下のファイルをローカルに保存し、ルートディレクトリ直下に配置する</li>
+                    <ul>
+                        <li class="dotless"><a href="../data/gulpfile.js">gulpfile (e-freak向け)</a></li>
+                    </ul>
+                    <li class="dotless">※ ビルドスクリプトのようなもの</li>
+                </ol>
+            </section>
+            <section>
+                <h2 id="title-entry-point">エントリポイント作成</h2>
+                <ol>
+                    <li class="dotless">以下のファイルをローカルに保存し、ルートディレクトリ直下に配置する</li>
+                    <ul>
+                        <li class="dotless"><a href="../data/index.js">index.js (e-freak向け)</a></li>
+                    </ul>
+                    <li class="dotless">※ 内容は適宜調整のこと</li>
+                </ol>
+            </section>
+            <section>
+                <h2 id="title-directory">ディレクトリ構成</h2>
+                <ol>
+                    <li class="dotless">以下の構成を推奨しておく</li>
+                    <ul>
+                        <li class="directory-icon">[root]</li>
+                        <ul>
+                            <li class="directory-icon">node_modules</li>
+                            <li class="directory-icon">app</li>
+                            <ul class="marginless">
+                                <li class="directory-icon">css</li>
+                                <ul class="marginless">
+                                    <li class="file-icon">default.css</li>
+                                </ul>
+                                <li class="directory-icon">image</li>
+                                <li class="directory-icon">script</li>
+                                <li class="directory-icon">sound</li>
+                                <li class="directory-icon">view</li>
+                                <ul class="marginless">
+                                    <li class="file-icon">xxx.html</li>
+                                    <li class="file-icon">yyy.html</li>
+                                    <li class="file-icon">zzz.html</li>
+                                </ul>
+                            </ul>
+                            <li class="directory-icon">cache</li>
+                            <li class="directory-icon">src</li>
+                            <ul class="marginless">
+                                <li class="directory-icon">main</li>
+                                <ul class="marginless">
+                                    <li class="directory-icon">jsx</li>
+                                    <ul class="marginless">
+                                        <li class="file-icon">aaa.jsx</li>
+                                        <li class="file-icon">bbb.jsx</li>
+                                        <li class="file-icon">ccc.jsx</li>
+                                    </ul>
+                                </ul>
+                                <li class="directory-icon">test</li>
+                                <ul class="marginless">
+                                    <li class="directory-icon">jsx</li>
+                                    <ul class="marginless">
+                                        <li class="file-icon">aaa-test.jsx</li>
+                                        <li class="file-icon">bbb-test.jsx</li>
+                                        <li class="file-icon">ccc-test.jsx</li>
+                                    </ul>
+                                </ul>
+                            </ul>
+                            <li class="file-icon">.gitignore</li>
+                            <li class="file-icon">gulpfile.js</li>
+                            <li class="file-icon">index.js</li>
+                            <li class="file-icon">package.json</li>
+                        </ul>
+                    </ul>
+                    <li class="dotless">※ <strong>cache</strong> ディレクトリについては、.gitignoreに登録しておく</li>
+                    <ul>
+                        <li>ディレクトリを右クリックして「TortoiseGit」→「無視リストに追加」</li>
+                    </ul>
+                </ol>
+            </section>
+            <section>
+                <h2 id="title-hello">Hello, World</h2>
+                <ol>
+                    <li>app/view ディレクトリ直下に title.html を作成する</li>
+                    <li>title.html をテキストエディタで開き、「Hello, World」とだけ書いて保存</li>
+                    <li>ルートディレクトリで「electron [プロジェクト名]」を実行</li>
+                    <ul>
+                        <li>よく使うことになるので、上記コマンドを記載したbatファイルでも作っておくと良い</li>
+                    </ul>
+                    <li>electronのウィンドウが表示されたら成功</li>
+                    <li class="dotless"><img src="../image/sample01.png" alt="Hello, World" /></li>
                 </ol>
             </section>
         </main>

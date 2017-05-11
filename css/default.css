@@ -42,8 +42,24 @@ ul, ol {
     margin-bottom: 20px;
 }
 
+ul.marginless {
+    margin-bottom: 0px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
 li.dotless {
     list-style: none;
+}
+
+li.directory-icon {
+    list-style-image: url("../image/icon-directory.png");
+}
+
+li.file-icon {
+    list-style-image: url("../image/icon-file.png");
 }
 
 #copyright {
