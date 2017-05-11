@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Gitの運用</title>
+        <link href="../css/default.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="..">Back</a>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h1>Gitの運用</h1>
+                <ul>
+                    <li><a href="#title-abstract">全体像</a></li>
+                    <li><a href="#title-initialize">プロジェクト作成直後</a></li>
+                    <li><a href="#title-develop">開発中</a></li>
+                    <li><a href="#title-release">開発完了</a></li>
+                </ul>
+            </section>
+            <section>
+                <h1 id="title-abstract">全体像</h1>
+                <ul>
+                    <li>git-flowをさらに簡略化し、下図のような運用とする</li>
+                    <li class="dotless"><img src="../image/git03.png" alt="e-freak git-flow" /></li>
+                </ul>
+            </section>
+            <section>
+                <h1 id="title-initialize">プロジェクト作成直後</h1>
+                <ol>
+                    <li>一度 master にコミットし、リモートにプッシュする</li>
+                    <li>master から <strong>develop</strong> という名前のブランチを作成</li>
+                    <li>ローカルブランチを develop に切り替える</li>
+                    <li>develop を リモートにプッシュする</li>
+                </ol>
+            </section>
+            <section>
+                <h1 id="title-develop">開発中</h1>
+                <ol>
+                    <li>develop から <strong>feature/xxx</strong> という名前のブランチを作成</li>
+                    <ul class="marginless">
+                        <li>xxx は任意文字列 (半角英数及びハイフン)</li>
+                        <li>タスク単位で開発を区切るのが妥当なので、大抵タスク名が入る</li>
+                    </ul>
+                    <li>ローカルブランチを feature/xxx に切り替える</li>
+                    <li>feature/xxx に適宜コミットしながら開発を進める</li>
+                    <li>開発の区切りに達したところで、ローカルブランチを develop に切り替える</li>
+                    <ul class="marginless">
+                        <li>少なくともユニットテストは通過させておくこと</li>
+                        <li>アプリケーションが起動できない状態は論外</li>
+                    </ul>
+                    <li>feature/xxx の内容を develop にマージした上で、feature/xxx ブランチを削除する</li>
+                    <li>develop を リモートにプッシュする</li>
+                </ol>
+            </section>
+            <section>
+                <h1 id="title-release">開発完了</h1>
+                <ol>
+                    <li>結合テスト完了時点で、上記に倣って develop をリモートにプッシュする</li>
+                    <ul class="marginless">
+                        <li>障害が存在しないと言える状態を保証すること</li>
+                    </ul>
+                    <li>ローカルブランチを master に切り替える</li>
+                    <li>develop の内容を master にマージする</li>
+                    <li>master を リモートにプッシュする</li>
+                </ol>
+            </section>
+        </main>
+        <footer>
+            <div id="copyright">
+                Copyright &#169; 2017 e-freak All Rights Reserved.
+            </div>
+        </footer>
+    </body>
+</html>
