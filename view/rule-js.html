@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>JavaScriptコーディングルール</title>
+        <link href="../css/default.css" rel="stylesheet" type="text/css" />
+        <link href="../css/rule.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="..">Back</a>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h1>JavaScriptコーディングルール</h1>
+                <ul>
+                    <li>ECMAScript2016の仕様に準拠すること</li>
+                    <li>UTF-8エンコーディングを使用し、改行コードはLFとすること</li>
+                    <li>クラスごとにファイルを分割すること</li>
+                    <ul>
+                        <li>かつ、<strong>export default class</strong> として定義すること</li>
+                    </ul>
+                    <li>privateなフィールド及びメソッドは、アンダースコアから始まる名前とすること</li>
+                    <li>無名関数が必要な場合、function構文ではなくラムダを用いること</li>
+                    <li>ローカル変数は原則的に <strong>const</strong> で宣言すること</li>
+                    <li>変数の初期化にはリテラルを用いること</li>
+                    <ul>
+                        <li><strong>new String('xxx')</strong> ではなく <strong>'xxx'</strong></li>
+                        <li><strong>new RegExp('xxx')</strong> ではなく <strong>/xxx/</strong></li>
+                        <li><strong>new Array()</strong> ではなく <strong>[]</strong></li>
+                        <li><strong>new Object()</strong> ではなく <strong>{}</strong></li>
+                    </ul>
+                    <li>可能な箇所では厳密比較演算子を用いること</li>
+                    <ul>
+                        <li><strong>==</strong> ではなく <strong>===</strong></li>
+                    </ul>
+                    <li>リストのループには forEach() メソッドを用いること</li>
+                </ul>
+            </section>
+        </main>
+        <footer>
+            <div id="copyright">
+                Copyright &#169; 2017 e-freak All Rights Reserved.
+            </div>
+        </footer>
+    </body>
+</html>

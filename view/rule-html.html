@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTMLコーディングルール</title>
+        <link href="../css/default.css" rel="stylesheet" type="text/css" />
+        <link href="../css/rule.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="..">Back</a>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h1>HTMLコーディングルール</h1>
+                <ul>
+                    <li>HTML5の仕様に準拠すること</li>
+                    <li>UTF-8エンコーディングを使用し、改行コードはLFとすること</li>
+                    <li>全てのタグ、属性名、ID、クラス名は小文字で</li>
+                    <li>直接スタイルシートやスクリプトを記述せず、外部ファイルを用いること</li>
+                    <ul>
+                        <li><strong>style</strong> 属性も使用禁止</li>
+                    </ul>
+                    <li>終了タグが不要なタグ（&lt;img /&gt; など）は、タグの末尾にスラッシュを付けること</li>
+                    <li>外部スクリプトの読み込みは &lt;body&gt;&lt;/body&gt; の終了タグ直前で行うこと</li>
+                    <li><strong>&lt;center&gt;&lt;/center&gt;</strong> タグ使用禁止</li>
+                    <ul>
+                        <li>レイアウトに関連する内容はCSSを使用して記述すること</li>
+                    </ul>
+                    <li><strong>&lt;br /&gt;</strong> タグ使用禁止</li>
+                    <ul>
+                        <li>レイアウトに関連する内容はCSSを使用して記述すること</li>
+                        <li>例外： 1つの文章として長文を書く場合の整形</li>
+                    </ul>
+                </ul>
+            </section>
+        </main>
+        <footer>
+            <div id="copyright">
+                Copyright &#169; 2017 e-freak All Rights Reserved.
+            </div>
+        </footer>
+    </body>
+</html>
