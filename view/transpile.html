@@ -30,12 +30,14 @@
                     <li>package.json の scripts 要素を、以下の記述に変更</li>
                     <ul>
                         <li class="dotless">
-                            <span class="codeline">"scripts": {</span>
-                            <span class="codeline">  "compile": "gulp compile",</span>
-                            <span class="codeline">  "compile-main": "gulp compile-main",</span>
-                            <span class="codeline">  "compile-test": "gulp compile-test",</span>
-                            <span class="codeline">  "test": "gulp unit-test"<span class="code-comment">  // コンマを付けるとエラー (JSONの仕様参照)</span></span>
-                            <span class="codeline">},</span>
+                            <code>
+                                "scripts": {<br />
+                                &nbsp;&nbsp;"compile": "gulp compile",<br />
+                                &nbsp;&nbsp;"compile-main": "gulp compile-main",<br />
+                                &nbsp;&nbsp;"compile-test": "gulp compile-test",<br />
+                                &nbsp;&nbsp;"test": "gulp unit-test"<span class="code-comment">  // コンマを付けるとエラー (JSONの仕様参照)</span><br />
+                                },<br />
+                            </code>
                         </li>
                     </ul>
                 </ul>
@@ -64,23 +66,27 @@
                     <li>title-view-controller.jsx を実装する</li>
                     <ul>
                         <li class="dotless">
-                            <span class="codeline">global.window.addEventListener('DOMContentLoaded', () => {</span>
-                            <span class="codeline">    alert("Hello, Script.");</span>
-                            <span class="codeline">}, false);</span>
+                            <code>
+                                global.window.addEventListener('DOMContentLoaded', () => {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;alert("Hello, Script.");<br />
+                                }, false);<br />
+                            </code>
                         </li>
                     </ul>
                     <li>title.html を実装する</li>
                     <ul>
                         <li class="dotless">
-                            <span class="codeline">&lt;!DOCTYPE html&gt;</span>
-                            <span class="codeline">&lt;html&gt;</span>
-                            <span class="codeline">    &lt;head&gt;</span>
-                            <span class="codeline">        &lt;meta charset="UTF-8" /&gt;</span>
-                            <span class="codeline">    &lt;/head&gt;</span>
-                            <span class="codeline">    &lt;body&gt;</span>
-                            <span class="codeline">        &lt;script src="../script/title-view-controller.js" type="text/javascript"&gt;&lt;/script&gt;</span>
-                            <span class="codeline">    &lt;/body&gt;</span>
-                            <span class="codeline">&lt;/html&gt;</span>
+                            <code>
+                                &lt;!DOCTYPE html&gt;<br />
+                                &lt;html&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8" /&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/head&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script src="../script/title-view-controller.js"&gt;&lt;/script&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;<br />
+                                &lt;/html&gt;<br />
+                            </code>
                         </li>
                     </ul>
                     <li>トランスパイルを実行</li>

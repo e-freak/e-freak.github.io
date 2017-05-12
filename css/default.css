@@ -61,14 +61,9 @@ li.file-icon {
     list-style-image: url("../image/icon-file.png");
 }
 
-span.codeline {
+code {
     color: #000080;
     font-family: 'Consolas', 'Courier New', 'Courier', 'Monaco', 'monospace';
-    white-space: pre-wrap;
-}
-
-span.codeline::after {
-    content: "\A";
 }
 
 span.code-comment {
