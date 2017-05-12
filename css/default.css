@@ -41,7 +41,7 @@ ul, ol {
     margin-bottom: 20px;
 }
 
-ul.marginless {
+ul.marginless, ol.marginless {
     margin-bottom: 0px;
 }
 
