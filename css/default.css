@@ -54,11 +54,11 @@ li.dotless {
 }
 
 li.directory-icon {
-    list-style-image: url("../image/icon-directory.png");
+    list-style-image: url('../image/icon-directory.png');
 }
 
 li.file-icon {
-    list-style-image: url("../image/icon-file.png");
+    list-style-image: url('../image/icon-file.png');
 }
 
 code {
