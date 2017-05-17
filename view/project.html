@@ -79,8 +79,17 @@
             <section>
                 <h1 id="title-entry-point">エントリポイント作成</h1>
                 <ol>
-                    <li class="dotless">e-freakから取得した index.js をローカルに保存し、ルートディレクトリ直下に配置する</li>
-                    <li class="dotless">※ 内容は適宜調整のこと</li>
+                    <li>e-freakから取得した index.js をローカルに保存し、ルートディレクトリ直下に配置する</li>
+                    <li>index.js を [プロジェクト名].js にリネームする</li>
+                    <li>package.json をテキストエディタで開き、main 要素の値を [プロジェクト名].js に変更</li>
+                    <ul>
+                        <li class="dotless">
+                            <code>
+                                "main": "[プロジェクト名].js",<br />
+                            </code>
+                        </li>
+                    </ul>
+                    <li class="dotless">※ index.js の内容も適宜調整のこと</li>
                 </ol>
             </section>
             <section>
@@ -131,8 +140,8 @@
                             </ul>
                             <li class="file-icon">.gitignore</li>
                             <li class="file-icon">gulpfile.js</li>
-                            <li class="file-icon">index.js</li>
                             <li class="file-icon">package.json</li>
+                            <li class="file-icon">[プロジェクト名].js</li>
                         </ul>
                     </ul>
                     <li class="dotless">※ <strong>cache</strong> ディレクトリについては、.gitignoreに登録しておく</li>
