@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 body {
     margin-top: 10px;
@@ -10,7 +10,7 @@ body {
     background-position: right bottom;
     color: #404040;
     font-size: 12pt;
-    font-family: 'Meiryo UI', 'ƒƒCƒŠƒI', 'Sans-serif';
+    font-family: 'Meiryo UI', 'ãƒ¡ã‚¤ãƒªã‚ª', 'Sans-serif';
 }
 
 header {
