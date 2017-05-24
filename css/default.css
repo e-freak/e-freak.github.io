@@ -70,6 +70,12 @@ span.code-comment {
     color: #008000;
 }
 
+img.border {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #C040C0
+}
+
 #copyright {
     color: #C0C0C0;
     font-size: 9pt;

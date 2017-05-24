@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>ビューの作り方</title>
+        <link rel="stylesheet" href="../css/default.css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="..">Back</a>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h1>ビューの作り方</h1>
+                <ul>
+                    <li><a href="#title-01">画面の概要を決める</a></li>
+                    <li><a href="#title-02">HTMLにそのまま記載</a></li>
+                    <li><a href="#title-03">CSS利用のための下準備</a></li>
+                    <li><a href="#title-04">CSSで整形</a></li>
+                </ul>
+            </section>
+            <section>
+                <h1 id="title-01">画面の概要を決める</h1>
+                <ul>
+                    <li>画面上に並べたい要素を漠然と洗い出すだけで良い</li>
+                    <li class="dotless"><img src="../image/view01.png" alt="画面サンプル" /></li>
+                </ul>
+            </section>
+            <section>
+                <h1 id="title-02">HTMLにそのまま記載</h1>
+                <ul>
+                    <li>HTMLでそれらしい機能が実現できるタグを調べてまずは書いてみる</li>
+                    <li>それぞれの領域は <strong>&lt;div&gt;</strong> タグで区切っておくと良い。</li>
+                    <ul>
+                        <li class="dotless">
+                            <code>
+                                &lt;!DOCTYPE html&gt;<br />
+                                &lt;html&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8" /&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;e-freak&lt;/title&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/head&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;main&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- ゲーム画面 (まだ何を配置するか未定) --&gt;</span><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- メッセージ表示部 --&gt;</span><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;textarea&gt;&lt;/textarea&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- ボタン類 --&gt;</span><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button"&gt;OK&lt;/button&gt; &lt;button type="button"&gt;Cancel&lt;/button&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/main&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;<br />
+                                &lt;/html&gt;<br />
+                            </code>
+                        </li>
+                    </ul>
+                    <li>出来上がったHTMLをブラウザで開くと、求めるものとは少し違う画面が表示される</li>
+                    <li class="dotless"><img class="border" src="../image/view02.png" alt="画面サンプル" /></li>
+                </ul>
+            </section>
+            <section>
+                <h1 id="title-03">CSS利用のための下準備</h1>
+                <ul>
+                    <li>求める画面に近付けるために、CSSを使って整形するための準備を行う</li>
+                    <ul>
+                        <li>先の画面はHTMLとしては基本的に完成している</li>
+                        <li>このように<strong>論理的な構造のみをHTMLで表現し、視覚的な調整はCSSによって行う</strong>のが正しい責務分担</li>
+                    </ul>
+                    <li>HTMLタグに、スタイルを適用するためのクラスを追加していく</li>
+                    <ul>
+                        <li>クラス名の命名は一例なので、好きなように付けて良い</li>
+                        <li>IDセレクタによるスタイル指定は非推奨</li>
+                    </ul>
+                    <li>ついでにスタイルシートを読み込むための <strong>&lt;link&gt;</strong> タグも書いておく</li>
+                    <ul>
+                        <li class="dotless">
+                            <code>
+                                &lt;!DOCTYPE html&gt;<br />
+                                &lt;html&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8" /&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;e-freak&lt;/title&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>&lt;link rel="stylesheet" href="./css/default.css" /&gt;</strong><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/head&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;main&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div <strong>class="game-field"</strong>&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- ゲーム画面 (まだ何を配置するか未定) --&gt;</span><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div <strong>class="message-field"</strong>&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- メッセージ表示部 --&gt;</span><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;textarea <strong>class="message"</strong>&gt;&lt;/textarea&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div <strong>class="menu-field"</strong>&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- ボタン類 --&gt;</span><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" <strong>class="menu"</strong>&gt;OK&lt;/button&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" <strong>class="menu"</strong>&gt;Cancel&lt;/button&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/main&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;<br />
+                                &lt;/html&gt;<br />
+                            </code>
+                        </li>
+                    </ul>
+                </ul>
+            </section>
+            <section>
+                <h1 id="title-04">CSSで整形</h1>
+                <ul>
+                    <li>app/css に、defeult.css を作成する</li>
+                    <li>クラスに対するスタイルをCSSで記述する</li>
+                    <ul>
+                        <li>タグとクラスの組み合わせに対する指定が望ましい</li>
+                        <li>HTML中に一度しか出現しない仕様となっているタグについては、タグに対する指定で良い</li>
+                    </ul>
+                    <ul>
+                        <li class="dotless">
+                            <code>
+                                @charset 'UTF-8';<br />
+                                <br />
+                                body {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;margin-left: auto;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;margin-right: auto;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;text-align: center;<br />
+                                }<br />
+                                <br />
+                                div.game-field {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;min-height: 150px;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #FF8080;<br />
+                                }<br />
+                                <br />
+                                div.message-field {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #80FF80;<br />
+                                }<br />
+                                <br />
+                                div.menu-field {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #8080FF;<br />
+                                }<br />
+                                <br />
+                                textarea.message {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;min-width: 250px;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;min-height: 100px;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;border-style: solid;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;border-width: 3px;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;border-color: #FF0000;<br />
+                                }<br />
+                                <br />
+                                button.menu {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;width: 200px;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;height: 30px;<br />
+                                }<br />
+                            </code>
+                        </li>
+                    </ul>
+                    <li>HTMLを開き直して、CSSが適用されていることを確認する</li>
+                    <li class="dotless"><img class="border" src="../image/view03.png" alt="画面サンプル" /></li>
+                </ul>
+            </section>
+        </main>
+        <footer>
+            <div id="copyright">
+                Copyright &#169; 2017 e-freak All Rights Reserved.
+            </div>
+        </footer>
+    </body>
+</html>
