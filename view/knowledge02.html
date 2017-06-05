@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>スクリプトとの連携</title>
+        <link rel="stylesheet" href="../css/default.css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="..">Back</a>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h1>スクリプトとの連携</h1>
+                <ul>
+                    <li><a href="#title-01">スクリプト利用のための下準備</a></li>
+                    <li><a href="#title-02">イベントリスナの登録</a></li>
+                    <li><a href="#title-03">イベントリスナの注意点</a></li>
+                </ul>
+            </section>
+            <section>
+                <h1 id="title-01">スクリプト利用のための下準備</h1>
+                <ul>
+                    <li>JavaScriptを使って動的な振る舞いを実現するための準備を行う</li>
+                    <ul>
+                        <li><strong>静的な構造のみをHTMLに記載し、動的な振る舞いはスクリプト側に記載する</strong>のが正しい責務分担</li>
+                    </ul>
+                    <li>HTMLタグに、スクリプトからアクセスするためのIDを追加していく</li>
+                    <ul>
+                        <li>IDの命名は一例なので、好きなように付けて良い</li>
+                        <li>クラス名によるアクセスも可能だが、明確にそうした方が良いと言える理由が無ければIDによるアクセスを推奨</li>
+                    </ul>
+                    <li>ついでにスクリプトを読み込むための <strong>&lt;script&gt;</strong> タグも書いておく</li>
+                    <ul>
+                        <li class="dotless">
+                            <code>
+                                &lt;!DOCTYPE html&gt;<br />
+                                &lt;html&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8" /&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;e-freak&lt;/title&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel="stylesheet" href="./css/default.css" /&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/head&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;main&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="game-field"&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="message-field"&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;textarea class="message"&gt;&lt;/textarea&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="menu-field"&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- ボタン類 --&gt;</span><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="menu" <strong>id="button-ok"</strong>&gt;OK&lt;/button&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type="button" class="menu" <strong>id="button-cancel"</strong>&gt;Cancel&lt;/button&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/main&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<strong>script src="./script/sample-view-controller.js"&gt;&lt;/script&gt;</strong><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;<br />
+                                &lt;/html&gt;<br />
+                            </code>
+                        </li>
+                    </ul>
+                </ul>
+            </section>
+            <section>
+                <h1 id="title-02">イベントリスナの登録</h1>
+                <ol>
+                    <li>src/main/jsx に、sample-view-controller.jsx を作成する</li>
+                    <ul>
+                        <li><a href="./develop.html">プロジェクト作成</a>に記載の通りにディレクトリとgulpfileを作成していることが前提</li>
+                    </ul>
+                    <li>画面読み込み完了時のイベントを登録する</li>
+                    <ul>
+                        <li class="dotless">
+                            <code>
+                                global.window.addEventListener('DOMContentLoaded', () => {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;initialize();<br />
+                                }, false);<br />
+                                <br />
+                                function initialize() {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// これから書く</span><br />
+                                }<br />
+                            </code>
+                        </li>
+                        <li>HTML側で &lt;body onload="initialize()"&gt; のように記載するのは非推奨 （先述の理由による）</li>
+                    </ul>
+                    <li>要素をクリックした際のイベントを登録する</li>
+                    <ul>
+                        <li class="dotless">
+                            <code>
+                                function initialize() {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// イベントリスナーを別関数として記載</span><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;global.document.getElementById('button-ok').addEventListener('click', onClickOKButton);<br />
+                                <br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// イベントリスナーをラムダで記載</span><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;global.document.getElementById('button-cancel').addEventListener('click', () => {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("キャンセルボタンが押下されました");<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;});<br />
+                                }<br />
+                                <br />
+                                function onClickOKButton() {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;alert("OKボタンが押下されました");<br />
+                                }<br />
+                            </code>
+                        </li>
+                        <li>画面読み込み完了時に発火させなければ、要素が画面上に存在しない点に注意</li>
+                    </ul>
+                    <li>より複雑な処理を行う上では、別クラスに定義するなどの工夫を設けたい</li>
+                    <ul>
+                        <li class="dotless">
+                            <code>
+                                <span class="code-comment">// sample-view.html</span><br />
+                                &lt;!DOCTYPE html&gt;<br />
+                                &lt;html&gt;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt!-- 中略 --&gt;</span><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<strong>script src="./script/loader/sample-view-controller-loader.js"&gt;&lt;/script&gt;</strong><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;<br />
+                                &lt;/html&gt;<br />
+                            </code>
+                        </li>
+                        <hr class="file-separator" />
+                        <li class="dotless">
+                            <code>
+                                <span class="code-comment">// sample-view-controller-loder.jsx</span><br />
+                                import SampleViewController from '../controller/sample-view-controller';<br />
+                                <br />
+                                global.window.addEventListener('DOMContentLoaded', () => {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;global.controller = new SampleViewController(global.document);<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;global.controller.initialize();<br />
+                                }, false);<br />
+                            </code>
+                        </li>
+                        <hr class="file-separator" />
+                        <li class="dotless">
+                            <code>
+                                <span class="code-comment">// sample-view-controller.jsx</span><br />
+                                export default class SampleViewController {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;constructor(view) {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view = view;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;initialize() {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view.getElementById('button-ok').addEventListener('click', onClickOKButton);<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view.getElementById('button-cancel').addEventListener('click', () => {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("キャンセルボタンが押下されました");<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;onClickOKButton() {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("OKボタンが押下されました");<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                                }<br />
+                            </code>
+                        </li>
+                    </ul>
+                    <li>こうすることで、MVCの形で綺麗に責務が分担できる</li>
+                    <ul>
+                        <li class="dotless"><img src="../image/design01.png" alt="クラス図" /></li>
+                    </ul>
+                </ol>
+            </section>
+            <section>
+                <h1 id="title-03">イベントリスナの注意点</h1>
+                <ul>
+                    <li>イベントリスナ内部での <strong>this</strong> は、イベントが登録されている要素を指す</li>
+                    <ul>
+                        <li class="dotless">
+                            <code>
+                                export default class SampleViewController {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;constructor(view) {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view = view;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>this._number = 123;</strong><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;initialize() {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view.getElementById('button-ok').addEventListener('click', onClickOKButton);<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;onClickOKButton() {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// ここでの <strong>this</strong> は <strong>id="button-ok" であるHTML要素</strong>を指すので、期待する動作にはならない</span><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(<strong>this._number</strong>);<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                                }<br />
+                            </code>
+                        </li>
+                    </ul>
+                    <li>期待通りの動作とするには <strong>bind()</strong> を使うと良い</li>
+                    <ul>
+                        <li class="dotless">
+                            <code>
+                                export default class SampleViewController {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;constructor(view) {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view = view;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._number = 123;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;initialize() {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view.getElementById('button-ok').addEventListener('click', onClickOKButton<strong>.bind(this)</strong>);<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;onClickOKButton() {<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">// 期待通りに「123」が表示される</span><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(<strong>this._number</strong>);<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                                }<br />
+                            </code>
+                        </li>
+                    </ul>
+                </ol>
+            </section>
+        </main>
+        <footer>
+            <div id="copyright">
+                Copyright &#169; 2017 e-freak All Rights Reserved.
+            </div>
+        </footer>
+    </body>
+</html>

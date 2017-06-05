@@ -38,7 +38,7 @@ section {
 }
 
 ul, ol {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 ul.marginless, ol.marginless {
@@ -74,6 +74,14 @@ img.border {
     border-style: solid;
     border-width: 2px;
     border-color: #C040C0
+}
+
+hr.file-separator {
+    width: 70%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: 0;
 }
 
 #copyright {
