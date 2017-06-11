@@ -142,7 +142,7 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;}<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;initialize() {<br />
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view.getElementById('button-ok').addEventListener('click', onClickOKButton);<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view.getElementById('button-ok').addEventListener('click', this.onClickOKButton);<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view.getElementById('button-cancel').addEventListener('click', () => {<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("キャンセルボタンが押下されました");<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br />
@@ -175,7 +175,7 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;}<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;initialize() {<br />
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view.getElementById('button-ok').addEventListener('click', onClickOKButton);<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view.getElementById('button-ok').addEventListener('click', this.onClickOKButton);<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;}<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;onClickOKButton() {<br />
@@ -197,7 +197,7 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;}<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;initialize() {<br />
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view.getElementById('button-ok').addEventListener('click', onClickOKButton<strong>.bind(this)</strong>);<br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this._view.getElementById('button-ok').addEventListener('click', this.onClickOKButton<strong>.bind(this)</strong>);<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;}<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;<br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;onClickOKButton() {<br />
