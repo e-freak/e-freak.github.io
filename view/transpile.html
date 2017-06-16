@@ -33,8 +33,6 @@
                             <code>
                                 "scripts": {<br />
                                 &nbsp;&nbsp;"compile": "gulp compile",<br />
-                                &nbsp;&nbsp;"compile-main": "gulp compile-main",<br />
-                                &nbsp;&nbsp;"compile-test": "gulp compile-test",<br />
                                 &nbsp;&nbsp;"test": "gulp unit-test"<span class="code-comment">  // コンマを付けるとエラー (JSONの仕様参照)</span><br />
                                 },<br />
                             </code>
@@ -49,11 +47,11 @@
                     <ul>
                         <li>よく使うことになるので、上記コマンドを記載したbatファイルを作っておくと良い</li>
                     </ul>
-                    <li>src/main/jsx ディレクトリ下のスクリプトがトランスパイルされて、app/script ディレクトリ下に配置される</li>
+                    <li>src/main/js ディレクトリ下のスクリプトがトランスパイルされて、app/script ディレクトリ下に配置される</li>
                     <ul>
                         <li>ディレクトリ構造もそのまま維持される</li>
                         <ul>
-                            <li>src/main/jsx/controller/foo.jsx をトランスパイルすると、app/script/controller/foo.js として配置される</li>
+                            <li>src/main/js/controller/foo.js をトランスパイルすると、app/script/controller/foo.js として配置される</li>
                         </ul>
                         <li>JavaScriptに package-private の概念は無いが、適宜ディレクトリを分けることを推奨</li>
                     </ul>
@@ -62,8 +60,8 @@
             <section>
                 <h1 id="title-hello">Hello, Script</h1>
                 <ol>
-                    <li>src/main/jsx ディレクトリ直下に title-view-controller.jsx を作成する</li>
-                    <li>title-view-controller.jsx を実装する</li>
+                    <li>src/main/js ディレクトリ直下に title-view-controller.js を作成する</li>
+                    <li>title-view-controller.js を実装する</li>
                     <ul>
                         <li class="dotless">
                             <code>
